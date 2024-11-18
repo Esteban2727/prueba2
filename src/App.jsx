@@ -1,9 +1,12 @@
 import Home from "./pages/Home";
 import Register from "./formulario/Register";
-import Login from "./formulario/login";
+import Login from "./formulario/Login";
 import InicioSesion from "./pages/InicioSesion";
 import Triqui from "./juegos/Triqui";
-import JuntarParejas from "./juegos/JuntarParejas";
+import RecibirTriqui from "./juegos/recibirTriqui";
+/* import JuntarParejas from "./juegos/JuntarParejas"; */
+
+
 import {
   createBrowserRouter,
   RouterProvider,
@@ -12,6 +15,8 @@ import {
 } from "react-router-dom";
 
 import "./app.css";
+import Perfil from "./juegos/perfil";
+
 
 const routes = createBrowserRouter([
   {
@@ -27,8 +32,10 @@ const routes = createBrowserRouter([
   },
    { path: "/inicioSesion", element: <InicioSesion /> ,
    },
-   { path:"triqui", element: <Triqui /> },
-   { path:"juntarParejas", element: <JuntarParejas /> },
+   { path:"triqui", element: <RecibirTriqui /> },
+ /*   { path:"JuntarParejas", element: <JuntarParejas /> }, */
+   { path:"Perfil", element: <Perfil/> },
+  
    
   
 ]);

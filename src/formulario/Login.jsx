@@ -24,7 +24,7 @@ const handlerLogin = async(e)=>{
   e.preventDefault()
   
 
-  const url= 'http://localhost:4000'
+  const url= 'http://localhost:5000/'
   const response=await fetch(url,{
     method:"POST",
     // especifica que contenido va a transportar
@@ -36,6 +36,10 @@ const handlerLogin = async(e)=>{
     body: JSON.stringify(getDataLogin), 
   })
   if(response.ok){
+    const data = await response.json();  
+     // Guarda los tokens si es necesario
+     localStorage.setItem('accessToken', data.access);
+     localStorage.setItem('refreshToken', data.refresh);
     Swal.fire({
       title: "Good job!",
       text: "yo have been signed up correctly",

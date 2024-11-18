@@ -55,7 +55,7 @@ export default function Register() {
           });
         }
         
-        const url='http://localhost:4000/register'
+        const url='http://localhost:5000/register/'
          const response= await fetch(url,{
           method:"POST",
           headers: {
