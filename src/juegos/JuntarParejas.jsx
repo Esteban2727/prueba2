@@ -43,7 +43,7 @@ export default function JuntarParejas() {
   const [intentos, setIntentos] = useState(0);
   const [nivel, setNivel] = useState("clasico"); // Estado para el nivel seleccionado
   const isSelected = useRef(false);
-
+console.log("cmabio hecho")
   useEffect(() => {
     reiniciar();
   }, [nivel]); // Reinicia el juego cuando el nivel cambia
