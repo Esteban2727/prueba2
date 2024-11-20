@@ -79,7 +79,7 @@ export default function JuntarParejas() {
       }, 1000);
     }
   };
-
+  console.log("hola mundo")
   return (
     <div className={`first_container ${nivel === "clasico" ? "nivel-clasico" : "nivel-dificil"}`}>
       <div className="header_couples">
