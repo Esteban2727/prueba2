@@ -24,20 +24,22 @@ const handlerLogin = async(e)=>{
   e.preventDefault()
   
 
-  const url= 'http://localhost:5000/'
+  const url= 'http://localhost:5000/login_view/'
   const response=await fetch(url,{
     method:"POST",
-    // especifica que contenido va a transportar
+    
     headers:{
       'Content-Type': 'application/json', 
     },
-    //coge el objeto y lo tranforma a json en string
-    // stringify( tranforma de json a string)
+
     body: JSON.stringify(getDataLogin), 
   })
+  
   if(response.ok){
+    
+    
     const data = await response.json();  
-     // Guarda los tokens si es necesario
+    console.log(data)
      localStorage.setItem('accessToken', data.access);
      localStorage.setItem('refreshToken', data.refresh);
     Swal.fire({
@@ -66,7 +68,7 @@ const handlerLogin = async(e)=>{
         <p className="title">INICIAR</p>
 
       <label className="label" htmlFor="username">
-        Username
+        Correo
       </label>
 
       <input
@@ -76,7 +78,7 @@ const handlerLogin = async(e)=>{
         name="correo"
         value={getDataLogin.correo}
         onChange={CatchDatas}
-        placeholder="ingrese un nombre de usuario"
+        placeholder="ingrese su correo"
       />
 
 
@@ -95,7 +97,10 @@ const handlerLogin = async(e)=>{
       />
       {message}
     <div className="info-text">
-         not tienes una cuenta ? registrate <NavLink className="here" to={'/register'}>aqui</NavLink>
+         no tienes una cuenta ? registrate <NavLink className="here" to={'/register'}>aqui</NavLink>
+      </div>
+      <div className="info-text">
+          <NavLink className="here" to={'/recuperar'}>recuperar Contraseña</NavLink>
       </div>
       <div className="button-register" onClick={handlerLogin}>
         Iniciar

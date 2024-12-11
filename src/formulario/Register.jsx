@@ -8,9 +8,9 @@ export default function Register() {
   
 
   const [getDatas,SetgetDatas]=useState({
-    correo :"",
-    password:"",
-    username:""
+    username :"",
+    correo:"",
+    password:""
 
   })
 
@@ -61,9 +61,10 @@ export default function Register() {
           headers: {
             'Content-Type': 'application/json', 
           },
+          
           body: JSON.stringify(getDatas), 
         })
-        
+        console.log(getDatas)
         response.status==200?console.log("correct"):console.log("dont repeat email")
         if(response.status==200){
           Swal.fire({

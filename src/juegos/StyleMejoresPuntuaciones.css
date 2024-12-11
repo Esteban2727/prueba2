@@ -1,0 +1,132 @@
+/* Fondo general */
+.body_puntuacion {
+  font-family: 'Press Start 2P', cursive; /* Fuente retro-gamer */
+  background: linear-gradient(135deg, #0d0d24, #1a1a3d); /* Fondo degradado oscuro */
+  color: #e0e0e0;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.titulo_puntuaciones{
+  font-size: 50px;
+}
+
+
+.container {
+  display: flex;
+  width: 70vh;
+  background: rgba(34, 34, 51, 0.9); /* Fondo translúcido */
+  border-radius: 20px;
+  padding: 25px;
+  box-shadow: 0 0 25px rgba(0, 255, 198, 0.7), 0 0 50px rgba(0, 255, 198, 0.3); /* Efecto neón */
+  text-align: center;
+  color: #fff;
+  border: 3px solid #00ffc6;
+  animation: pulsate 2s infinite; /* Animación pulsante */
+
+}
+
+/* Animación pulsante para el contenedor */
+@keyframes pulsate {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(0, 255, 198, 0.5), 0 0 40px rgba(0, 255, 198, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(0, 255, 198, 0.8), 0 0 60px rgba(0, 255, 198, 0.5);
+  }
+}
+
+/* Título principal */
+.container h2 {
+  color: #00ffc6;
+  text-shadow: 0 0 15px rgba(0, 255, 198, 0.9), 0 0 30px rgba(0, 255, 198, 0.7);
+  margin-bottom: 20px;
+  animation: glow 2s infinite alternate; /* Efecto de brillo */
+}
+
+/* Efecto de brillo para el título */
+@keyframes glow {
+  from {
+    text-shadow: 0 0 10px rgba(0, 255, 198, 0.5), 0 0 20px rgba(0, 255, 198, 0.3);
+  }
+  to {
+    text-shadow: 0 0 20px rgba(0, 255, 198, 1), 0 0 40px rgba(0, 255, 198, 0.8);
+  }
+}
+
+/* Mensaje de error */
+.error-message {
+  color: #ff6f61; /* Rojo cálido */
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+/* Tabla de puntuaciones */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  animation: fadeIn 1s ease-in-out; /* Animación al aparecer */
+}
+
+/* Animación para hacer aparecer la tabla */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.table th,
+.table td {
+  padding: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.3); /* Líneas suaves */
+  text-align: center;
+  font-size: 1rem;
+  transition: all 0.3s ease-in-out; /* Transición para hover */
+}
+
+.table th {
+  background: linear-gradient(135deg, #00ffc6, #009e89); /* Encabezado neón */
+  color: #121212;
+  text-transform: uppercase;
+  font-size: 1.1rem;
+}
+
+.table td {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+.table tr:nth-child(even) {
+  background: rgba(255, 255, 255, 0.05); /* Fondo para filas pares */
+}
+
+.table tr:hover {
+  background: rgba(0, 255, 198, 0.2); /* Resaltado en hover */
+  box-shadow: 0 0 10px rgba(0, 255, 198, 0.5);
+  transform: scale(1.02); /* Efecto de agrandamiento */
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+/* Hover en celdas */
+.table td:hover {
+  color: #00ffc6;
+  background: rgba(255, 255, 255, 0.15);
+  transform: scale(1.1);
+}
+
+/* Resaltado del nombre del jugador */
+.table td:first-child {
+  font-weight: bold;
+  color: #f4d03f; /* Dorado */
+}

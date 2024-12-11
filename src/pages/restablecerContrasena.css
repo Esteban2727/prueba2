@@ -1,0 +1,158 @@
+/* Tipografía */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+
+body {
+  font-family: 'Orbitron', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #000000;
+  overflow: hidden;
+  height: 100vh;
+}
+
+/* Fondo animado */
+.animated-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(120deg, #1e3c72, #2a5298, #1e3c72);
+  background-size: 300% 300%;
+  animation: gradientMove 12s ease infinite;
+  z-index: -2;
+}
+
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Partículas */
+.particle-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background: url('https://www.transparenttextures.com/patterns/dark-mosaic.png');
+  opacity: 0.2;
+}
+
+/* Contenedor principal */
+.reset-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  position: relative;
+  color: #e6e6e6;
+}
+
+/* Tarjeta del formulario */
+.reset-card {
+  background: rgba(20, 20, 50, 0.95);
+  border: 2px solid rgba(0, 150, 255, 0.6);
+  border-radius: 15px;
+  padding: 40px;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 0 20px rgba(0, 150, 255, 0.5), inset 0 0 30px rgba(0, 150, 255, 0.2);
+  backdrop-filter: blur(15px);
+  animation: fadeIn 1.2s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Título */
+.reset-title {
+  font-size: 2rem;
+  color: #0096ff;
+  text-align: center;
+  margin-bottom: 20px;
+  text-shadow: 0 0 20px rgba(0, 150, 255, 1), 0 0 40px rgba(0, 150, 255, 0.8);
+}
+
+/* Descripción */
+.reset-description {
+  font-size: 1rem;
+  text-align: center;
+  margin-bottom: 30px;
+  color: #e6e6e6;
+  opacity: 0.9;
+}
+
+/* Inputs */
+.reset-input {
+  width: 100%;
+  padding: 15px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #e6e6e6;
+  margin-bottom: 20px;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.reset-input:focus {
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 10px rgba(0, 150, 255, 0.5), 0 0 20px rgba(0, 150, 255, 0.3);
+}
+
+/* Botón */
+.reset-button {
+  width: 100%;
+  padding: 15px;
+  font-size: 1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 10px;
+  color: #000;
+  background: linear-gradient(45deg, #0096ff, #00e0ff);
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.reset-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(0, 150, 255, 0.5), 0 0 40px rgba(0, 150, 255, 0.3);
+}
+
+/* Mensaje */
+.reset-message {
+  margin-top: 20px;
+  font-size: 1rem;
+  text-align: center;
+  color: #ffcc00;
+  animation: glow 2s infinite;
+}
+
+/* Animación de brillo */
+@keyframes glow {
+  0%, 100% {
+    text-shadow: 0 0 10px rgba(255, 204, 0, 0.8), 0 0 20px rgba(255, 204, 0, 0.6);
+  }
+  50% {
+    text-shadow: 0 0 20px rgba(255, 204, 0, 1), 0 0 40px rgba(255, 204, 0, 0.8);
+  }
+}

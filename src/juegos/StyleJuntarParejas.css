@@ -1,4 +1,5 @@
 .first_container {
+  background-image: url("https://c4.wallpaperflare.com/wallpaper/430/584/907/game-playstation-ps4-sony-wallpaper-thumb.jpg");
   display: flex;
   flex-direction: column;
   background-color: red;
@@ -11,7 +12,30 @@
   background-color: rgb(128, 39, 180);
   justify-content: space-around;
   box-shadow: 0 0 10px 5px rgba(135, 60, 196, 0.8); 
-  font-size: 18px;
+  font-size: 15px;
+  width: 1695px;
+}
+
+.icono{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 40px;
+}
+.icono svg {
+  font-size: 30px; 
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  color: rgb(70, 14, 240); 
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+}
+
+
+.icon svg:hover {
+  transform: scale(1.1); 
+  box-shadow: 0 8px 15px rgba(0, 255, 198, 0.8); 
 }
 
 .btn_reiniciar {
@@ -21,13 +45,12 @@
   background-color: rgb(157, 71, 255);
   box-shadow: 0 0 10px 5px rgb(120, 2, 218); 
   width: 180px;
-  height: 70px;
+  height: 60px;
   border-radius: 5px;
   justify-content: center;
   align-items: center;
   cursor: pointer;
 }
-
 
 
 .modo_Juego{
@@ -44,12 +67,14 @@
 .clasico{
   background-color: rgb(169, 100, 248);
   width: 100px;
-  padding: 10px;
+  height: 30px;
+  padding: 5px;
 }
 .dificil{
   background-color: rgb(169, 100, 248);
   width: 80px;
-  padding: 10px;
+  height: 30px;
+  padding: 5px;
 }
 
 
@@ -68,7 +93,7 @@
 
 .cartas {
   width: 135px;
-  height: 145px;
+  height: 135px;
   background-color: rgb(51, 39, 83);
   position: relative;
   cursor: pointer;
@@ -114,7 +139,7 @@
 /* Puedes añadir otros estilos diferentes para el nivel difícil */
 .nivel-dificil .cartas {
   width: 130px;
-  height: 125px;
+  height: 115px;
   background-color: rgb(51, 39, 83);
   position: relative;
   cursor: pointer;
@@ -133,7 +158,7 @@
   display: flex;
   flex-wrap: wrap;
   width: 900px;
-  height: 500px;
+  height: 450px;
   justify-content: space-around;
   color: white;
   margin: auto;

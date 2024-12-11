@@ -1,53 +1,118 @@
-.first_container{
-    background-image: url("https://c4.wallpaperflare.com/wallpaper/430/584/907/game-playstation-ps4-sony-wallpaper-thumb.jpg");
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-
+body{
+    margin: 0%;
+    padding: 0%;
+    overflow: hidden;
 }
-.title1{
-
+.triqui_principal{
+    background-image: url("https://c4.wallpaperflare.com/wallpaper/430/584/907/game-playstation-ps4-sony-wallpaper-thumb.jpg");
+    height: 100vh;
+    display: flex;
+}
+.primer_containers{
+   
     display: flex;
     flex-direction: column;
+    align-items: center;
     justify-content: center;
+    align-content: center;
+    width: 300vh;
+   
+}
+
+.icon-container svg {
+    font-size: 30px; 
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    color: rgb(176, 14, 240); 
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+}
+
+
+.icon-container svg:hover {
+    transform: scale(1.1); 
+    box-shadow: 0 8px 15px rgba(0, 255, 198, 0.8); 
+}
+
+.frases{
     align-items: center;
     color: rgb(182, 32, 32);
     font-size: 30px;
+    height: 60px;
+}
+.title1{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
 }
 .titulo{
     color: red;
 }
 
-.juego{
-    color: red;
-    font-size: 25px;
-}
 .modo{
-    background-color: red;
-    height: 80px;
-    color: red;
+    display: inline-block;
+    font-weight: bold;
+    color: white;
+    background: linear-gradient(145deg, #654caf, #1a52ae); /* Gradiente moderno */
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4), inset 0 -3px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.3s ease;
+    position: relative;
+    overflow: hidden;
 }
 
-.opciones{
-    background-color: aqua;
+
+.modo:hover {
+    background: linear-gradient(145deg, #4f23b6, #3704ce); /* Cambio de gradiente */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5), inset 0 -3px 10px rgba(0, 0, 0, 0.3);
 }
+
+
+.opciones{
+    display: flex;
+    flex-direction: row;
+    gap:10px;
+}
+
+
+.dificultad{
+    display: flex;
+    flex-direction: column;
+}
+.dificultad_label{
+    color: red;
+    font-size: 20px;
+}
+
+
+.juego{
+    color: red;
+    font-size: 35px;
+    padding: 10px;
+}
+
+
+
 
 /* Estilos del tablero */
 .tablero {
+    background: linear-gradient(145deg, #3a8dff, #1e40ff);
+    display: flex;
     width: 180px;
     height: 150px;
     border: 4px solid #555;
     border-radius: 10px;
-    display: flex;
     color: white;
     font-size: 50px;
-    background: linear-gradient(145deg, #3a8dff, #1e40ff);
     justify-content: center;
     align-items: center;
     cursor: pointer;
     transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
     box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.5), 0px 4px 15px rgba(30, 64, 255, 0.3);
+    gap: 30px;
 }
 
 /* Animación al pasar el cursor */
@@ -81,5 +146,16 @@
     opacity: 1;
 }
 
-/* Fondo del cuerpo para complementar el diseño */
 
+
+.alert{
+    font-size: 30px;
+    color:red;
+    display: flex;
+    padding: 10px;
+    gap: 20px;
+}
+.btn_cerrar{
+    height: 30px;
+    color: black;
+}

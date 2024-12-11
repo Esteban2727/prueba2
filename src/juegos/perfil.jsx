@@ -1,16 +1,18 @@
 import "./profile.css";
 import { BsEmojiLaughingFill } from "react-icons/bs";
 import { useState, useEffect } from "react";
+import Error404 from "../formulario/error";
+import { useNavigate } from "react-router-dom";
+import { BsFillHouseCheckFill } from "react-icons/bs";
 
 export default function Perfil() {
-  const [InfoPerfil, setInfoPerfil] = useState({});
+  const [infoPerfil, setInfoPerfil] = useState({});
   const [values5, setValues5] = useState({
-    nombre: "",
-    apellido: "",
-    usuario: "",
+    username: "",
     correo: "",
   });
-
+  const [puntuacion, setPuntuacion] = useState(null);
+  const navigate = useNavigate()
   function FunctionHandle(event) {
     const { name, value } = event.target;
     setValues5((prevValues) => ({
@@ -18,49 +20,71 @@ export default function Perfil() {
       [name]: value,
     }));
   }
-
+function cerrar(){
+  console.log("gola")
+  localStorage.setItem("accessToken",false)
+  navigate("/");
+}
   useEffect(() => {
     async function DatosUsuario() {
+      const accessToken = localStorage.getItem("accessToken");
+      console.log("Access Token enviado al backend:", accessToken);
+
+      if (!accessToken) {
+        navigate("/error");
+        console.error("No se encontró el token de acceso.");
+        return;
+      }
+
       try {
-        const url = "http://localhost:3001/pruebaPerfil";
+        const url = "http://localhost:5000/perfil/";
         const response = await fetch(url, {
-          method: "POST",
+          method: "GET",
           headers: {
             "Content-Type": "application/json",
+            Authorization: `Bearer ${accessToken}`,
           },
         });
 
         if (response.ok) {
           const data = await response.json();
+          console.log("Datos del perfil:", data);
           setInfoPerfil(data);
+          setValues5({
+            username: data.username || "",
+            correo: data.correo || "",
+          });
+          setPuntuacion(data.puntuacion || null);
         } else {
-          console.error("Error en la respuesta del servidor.");
+          navigate("/error");
+          console.error("Error en la respuesta del servidor:", await response.text());
+
         }
       } catch (error) {
+        navigate("/error");
         console.error("Error al obtener datos:", error);
       }
     }
 
     DatosUsuario();
   }, []);
-
-  useEffect(() => {
-    setValues5({
-      nombre: InfoPerfil.nombre || "",
-      apellido: InfoPerfil.apellido || "",
-      usuario: InfoPerfil.usuario || "",
-      correo: InfoPerfil.correo || "",
-    });
-  }, [InfoPerfil]);
-
+console.log(puntuacion)
   async function updateProfile(event) {
     event.preventDefault();
+    const accessToken = localStorage.getItem("accessToken");
+
+    if (!accessToken) {
+      console.error("No se encontró el token de acceso.");
+      return;
+    }
+
     try {
-      const url = "http://localhost:3001/pruebaPerfil";
+      const url = "http://localhost:5000/perfil/update/";
       const response = await fetch(url, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
+          Authorization: `Bearer ${accessToken}`,
         },
         body: JSON.stringify(values5),
       });
@@ -68,9 +92,10 @@ export default function Perfil() {
       if (response.ok) {
         const data = await response.json();
         setInfoPerfil(data);
+        console.log(data);
         alert("Perfil actualizado correctamente");
       } else {
-        console.error("Error al actualizar el perfil:", response.statusText);
+        alert("No se pudo actualizar el perfil, usuario o correo ya existentes");
       }
     } catch (error) {
       console.error("Error al actualizar el perfil:", error);
@@ -79,14 +104,35 @@ export default function Perfil() {
 
   return (
     <div className="main_main">
+      <div className="icono3">
+                <BsFillHouseCheckFill
+                    className="edit_home_profile"
+                    onClick={() => {
+                        navigate("/inicioSesion")
+                       }}
+                />
+            </div>
+      <button onClick={()=>{cerrar()}}> Cerrar sesión</button>      
       <div className="container_main_profile">
         <div className="container_main_profile__image">
           <BsEmojiLaughingFill className="edit_icon_Profile" />
         </div>
         <div className="container_main_profile__datas">
-          <p className="letter_style">{InfoPerfil.nombre}</p>
-          <p className="letter_style">{InfoPerfil.apellido}</p>
-          <p className="letter_style">{InfoPerfil.usuario}</p>
+          <p className="letter_style">{infoPerfil.username}</p>
+          <p className="letter_style">{infoPerfil.correo}</p>
+
+          <div className="puntuaciones">
+          <h3 className="mejorPuntuacion">Mejor Puntuación</h3>
+          {puntuacion ? (
+            <div className="intentos">
+              <p>Intentos: {puntuacion.intentos}</p>
+              <p>Fecha: {new Date(puntuacion.fecha).toLocaleString()}</p>
+            </div>
+          ) : (
+            <p>No hay puntuaciones disponibles.</p>
+          )}
+        </div>
+
         </div>
       </div>
 
@@ -95,12 +141,12 @@ export default function Perfil() {
           <form className="editar" onSubmit={updateProfile}>
             <div>
               <p>
-                Fullname :{" "}
+                Username:{" "}
                 <input
                   type="text"
-                  name="nombre"
-                  value={values5.nombre}
-                  placeholder={InfoPerfil.nombre}
+                  name="username"
+                  value={values5.username}
+                  placeholder={infoPerfil.username || "Escribe tu username"}
                   className="organizar"
                   onChange={FunctionHandle}
                 />
@@ -109,40 +155,12 @@ export default function Perfil() {
             <hr className="edit1" />
             <div>
               <p>
-                Lastname :{" "}
+                Email:{" "}
                 <input
-                  type="text"
-                  name="apellido"
-                  value={values5.apellido}
-                  placeholder={InfoPerfil.apellido}
-                  className="organizar"
-                  onChange={FunctionHandle}
-                />
-              </p>
-            </div>
-            <hr className="edit1" />
-            <div>
-              <p>
-                Username :{" "}
-                <input
-                  type="text"
-                  name="usuario"
-                  value={values5.usuario}
-                  placeholder={InfoPerfil.usuario}
-                  className="organizar"
-                  onChange={FunctionHandle}
-                />
-              </p>
-            </div>
-            <hr className="edit1" />
-            <div>
-              <p>
-                Email :{" "}
-                <input
-                  type="text"
+                  type="email"
                   name="correo"
                   value={values5.correo}
-                  placeholder={InfoPerfil.correo}
+                  placeholder={infoPerfil.correo || "Escribe tu email"}
                   className="organizar"
                   onChange={FunctionHandle}
                 />
@@ -153,6 +171,7 @@ export default function Perfil() {
             </div>
           </form>
         </div>
+        
       </div>
     </div>
   );
